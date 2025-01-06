@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: Serverless patterns - SNS to SQS to Lambda
+Description: Serverless patterns - SNS to SQS to Lambda (uksb-1tthgi812) (tag:sns-sqs-lambda-rust-sam)
 
 Globals:
   Function:
@@ -57,13 +57,16 @@ Resources:
   MyFunction:
     Type: AWS::Serverless::Function 
     Properties:
-      CodeUri: ./build/handler
+      CodeUri: .
       Events:
         MySQSEvent:
           Type: SQS
           Properties:
             Queue: !GetAtt MySqsQueue.Arn
             BatchSize: 10
+    Metadata:
+      BuildMethod: rust-cargolambda
+
 
 Outputs:
   MySqsQueueName:
@@ -81,4 +84,3 @@ Outputs:
   MySnsTopicArn:
     Description: SNS topic ARN
     Value: !Ref MySnsTopic
-
