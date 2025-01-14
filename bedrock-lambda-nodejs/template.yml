@@ -1,13 +1,14 @@
 AWSTemplateFormatVersion: 2010-09-09
 Transform: 'AWS::Serverless-2016-10-31'
 
+Description: (uksb-1tthgi812) (tag:bedrock-lambda-nodejs)
 Resources:
   BedrockFunction:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: src/
       Handler: index.handler
-      Runtime: nodejs16.x
+      Runtime: nodejs20.x
       MemorySize: 128
       Timeout: 600
       Policies:
