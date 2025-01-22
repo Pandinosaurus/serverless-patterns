@@ -1,6 +1,7 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: >
+  (uksb-1tthgi812) (tag:lambda-dynamodb-rust)
   Persist an item to a DynamoDB table from Lambda
 
 Globals:
@@ -22,7 +23,7 @@ Resources:
   LambdaPutDynamoDB:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: ./build/handler
+      CodeUri: .
       Environment:
         Variables:
           TABLE_NAME: !Ref DynamoTable
@@ -31,6 +32,9 @@ Resources:
         ## https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-policy-templates.html
         - DynamoDBWritePolicy:
             TableName: !Ref DynamoTable
+    Metadata:
+      BuildMethod: rust-cargolambda
+
 
 ##########################################################################
 #   DynamoDB                                                            #

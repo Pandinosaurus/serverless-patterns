@@ -1,6 +1,7 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: >
+  (uksb-1tthgi812) (tag:cognito-sns-sms-origination-id-sam)
   capstone-app
 
   Sample SAM Template for capstone-app
@@ -140,7 +141,7 @@ Resources:
       FunctionName: !Sub 'CustomSmsSender-${AWS::StackName}'
       Layers:
         - !Ref DependencyLayer
-      Runtime: nodejs14.x
+      Runtime: nodejs20.x
       Architectures:
       - x86_64
       Environment:
